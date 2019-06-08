@@ -1,8 +1,8 @@
 <?PHP
 
-include('FeedTwo.php');
+include('FeedThree.php');
 
-class Crawler extends FeedTwo{
+class Crawler extends FeedThree{
     
     public function index(){
          

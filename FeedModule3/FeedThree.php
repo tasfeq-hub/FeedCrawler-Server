@@ -3,10 +3,10 @@
 include_once($_SERVER['DOCUMENT_ROOT'].'/FeedCrawler-Server/ModuleDatabase/DatabaseModel.php'); // include database model
 require_once($_SERVER['DOCUMENT_ROOT'].'/FeedCrawler-Server/StringModifier.php'); // string modifier helper class
 
-define('webPageUrlTwo','http://syndication.eonline.com/syndication/feeds/rssfeeds/topstories.xml'); // set the URL of feed provider
+define('webPageUrlThree','http://feeds.skynews.com/feeds/rss/uk.xml'); // set the URL of feed provider
 
 
-class FeedTwo extends DatabaseModel{
+class FeedThree extends DatabaseModel{
     
     private $stringModifier;
 
@@ -18,7 +18,7 @@ class FeedTwo extends DatabaseModel{
 
     function storeFeeds(){
 
-        $feedXml = simplexml_load_file(webPageUrlTwo);
+        $feedXml = simplexml_load_file(webPageUrlThree);
         $feedJson = json_encode($feedXml);
         $feedArray = json_decode($feedJson,TRUE);
         $allFeedItems =$feedArray['channel']['item'];
@@ -28,10 +28,10 @@ class FeedTwo extends DatabaseModel{
             // save feed data in the database
             $this->saveFeed(
                 $this->stringModifier->modifyString($allFeedItems[$i]['title']),
-                "https://www.eonline.com/",
+                $allFeedItems[$i]['link'],
                 $allFeedItems[$i]['pubDate'],
                 date('Y-m-d H:i:s'),
-                "EONLINE" // hardcoded provider name! @todo make it dynamic in future
+                "SKYNEWS" // hardcoded provider name! @todo make it dynamic in future
             ); 
         
         }

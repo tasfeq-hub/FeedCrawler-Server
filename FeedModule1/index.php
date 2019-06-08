@@ -1,19 +1,19 @@
 <?PHP
 
-include('restaurantOne.php');
+include('FeedOne.php');
 
-class WebParser extends restaurantOne{
+class Crawler extends FeedOne{
     
     public function index(){
          
-          $this->setMenuItem();  
+          $this->storeFeeds();  
           
     }
     
 } // class ends
 
-$parser = new WebParser();
-$parser->index();
+$crawler = new Crawler();
+$crawler->index();
 
 ?>
 

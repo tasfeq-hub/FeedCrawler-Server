@@ -27,7 +27,7 @@ class FeedOne extends DatabaseModel{
             
             // save feed data in the database
             $this->saveFeed(
-                $allFeedItems[$i]['title'],
+                $this->stringModifier->modifyString($allFeedItems[$i]['title']),
                 $allFeedItems[$i]['link'],
                 $allFeedItems[$i]['pubDate'],
                 date('Y-m-d H:i:s'),
