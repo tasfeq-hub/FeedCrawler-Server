@@ -38,6 +38,18 @@ class DatabaseModel{
 
     } // function ends
 
+    protected function emptyFeedsTable(){
+
+        $connection = mysqli_connect(db_HOST,db_USER, db_PASS,db_NAME)
+        or die("Could not connect to the Feed Crawler Database:<br />" . mysql_error());
+        
+        if(mysqli_query($connection, 'TRUNCATE TABLE feeds;')){
+            // @todo in future
+        } else{
+            // @todo in future
+        }
+    }
+
 } // end of class
 
 

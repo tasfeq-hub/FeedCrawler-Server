@@ -15,8 +15,10 @@ include_once('FeedModule5/FeedFive.php'); // include FeedFive class
 class FeedCrawler extends DatabaseModel{
 
      public function index(){
+
+        /* clear feeds table first before updating */
+        $this->emptyFeedsTable();
  
-        /*
         $feedOne = new FeedOne();
         $feedOne->storeFeeds(); 
 
@@ -28,17 +30,18 @@ class FeedCrawler extends DatabaseModel{
         
         $feedFour = new FeedFour();
         $feedFour->storeFeeds();
-        */
+        
         $feedFive = new FeedFive();
         $feedFive->storeFeeds();
         
-        // insert log data into items log table
-        //$this->saveLogData("");
+        /* insert log data into items log table */
+        $this->saveLogData();
+        
     }
 
 }
 
-$parser = new FeedCrawler();
-$parser->index();
+$feedCrawler = new FeedCrawler();
+$feedCrawler->index();
 
 ?>
